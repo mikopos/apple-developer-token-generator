@@ -14,6 +14,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class GenerateTokenServiceImpl implements GenerateTokenService {
 
+  private static final String ALG = "alg";
+  private static final String KID = "kid";
+  private static final String ISS = "iss";
+  private static final String IAT = "iat";
+  private static final String EXP = "exp";
+  private static final int SECONDS_TO_ADD = 5184000; // 60 days
+
   @Override
   public String generate(String teamId, String keyId, String secret)
       throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -21,16 +28,14 @@ public class GenerateTokenServiceImpl implements GenerateTokenService {
     var privateKey = JwtUtil.getEcPrivateKey(secret);
     Algorithm algorithm = Algorithm.ECDSA256(null, privateKey);
     Map<String, Object> headers = new HashMap<>();
-    headers.put("alg", algorithm);
-    headers.put("kid", keyId);
+    headers.put(ALG, algorithm.getName());
+    headers.put(KID, keyId);
 
-    String token = JWT.create()
+    return JWT.create()
         .withHeader(headers)
-        .withClaim("iss", teamId)
-        .withClaim("exp", Instant.now().getEpochSecond())
-        .withClaim("iat", Instant.now().plusSeconds(43200).getEpochSecond())
+        .withClaim(ISS, teamId)
+        .withClaim(IAT, Instant.now().getEpochSecond())
+        .withClaim(EXP, Instant.now().plusSeconds(SECONDS_TO_ADD).getEpochSecond())
         .sign(algorithm);
-
-    return token;
   }
 }

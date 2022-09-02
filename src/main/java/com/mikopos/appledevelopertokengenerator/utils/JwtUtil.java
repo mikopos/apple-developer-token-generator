@@ -1,5 +1,6 @@
 package com.mikopos.appledevelopertokengenerator.utils;
 
+import java.nio.charset.StandardCharsets;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.ECPrivateKey;
@@ -12,7 +13,8 @@ public class JwtUtil {
 
   public static ECPrivateKey getEcPrivateKey(String secret)
       throws NoSuchAlgorithmException, InvalidKeySpecException {
-    byte[] encoded = Base64.getDecoder().decode(secret);
+
+    byte[] encoded = Base64.getDecoder().decode(secret.getBytes(StandardCharsets.UTF_8));
     KeyFactory kf = KeyFactory.getInstance("EC");
     EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encoded);
     return (ECPrivateKey) kf.generatePrivate(keySpec);
