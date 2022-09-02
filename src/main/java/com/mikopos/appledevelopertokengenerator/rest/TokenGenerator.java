@@ -19,7 +19,7 @@ public class TokenGenerator {
   }
 
   @PostMapping(value = "/generate", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-  private String generate(@RequestBody GenerateTokenRQ generateTokenRQ)
+  private String generate(GenerateTokenRQ generateTokenRQ)
       throws NoSuchAlgorithmException, InvalidKeySpecException {
     return generateTokenService.generate(generateTokenRQ.getTeamId(), generateTokenRQ.getKeyId(),
         generateTokenRQ.getSecret());
