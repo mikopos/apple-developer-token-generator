@@ -11,12 +11,24 @@ import java.util.Base64;
 
 public class JwtUtil {
 
+  private static final String EC = "EC";
+  private static final String BEGIN_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----";
+  private static final String END_PRIVATE_KEY = "-----END PRIVATE KEY-----";
+  private static final String LINE_CHANGE = "\r\n";
+
   public static ECPrivateKey getEcPrivateKey(String secret)
       throws NoSuchAlgorithmException, InvalidKeySpecException {
 
     byte[] encoded = Base64.getDecoder().decode(secret.getBytes(StandardCharsets.UTF_8));
-    KeyFactory kf = KeyFactory.getInstance("EC");
+    KeyFactory kf = KeyFactory.getInstance(EC);
     EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encoded);
     return (ECPrivateKey) kf.generatePrivate(keySpec);
+  }
+
+  public static String transformPrivateKey(String secret) {
+    var temp = secret.replace(BEGIN_PRIVATE_KEY, "")
+        .replace(END_PRIVATE_KEY, "")
+        .replace(LINE_CHANGE,"");
+    return temp;
   }
 }

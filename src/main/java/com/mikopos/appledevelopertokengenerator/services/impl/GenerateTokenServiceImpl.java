@@ -25,7 +25,9 @@ public class GenerateTokenServiceImpl implements GenerateTokenService {
   public String generate(String teamId, String keyId, String secret)
       throws NoSuchAlgorithmException, InvalidKeySpecException {
 
-    var privateKey = JwtUtil.getEcPrivateKey(secret);
+    var transformedSecret = JwtUtil.transformPrivateKey(secret);
+    var privateKey = JwtUtil.getEcPrivateKey(transformedSecret);
+
     Algorithm algorithm = Algorithm.ECDSA256(null, privateKey);
     Map<String, Object> headers = new HashMap<>();
     headers.put(ALG, algorithm.getName());
