@@ -18,6 +18,11 @@ public class TokenGenerator {
     this.generateTokenService = generateTokenService;
   }
 
+  @GetMapping(value = "/")
+  private String index(){
+    return "forward:index.html";
+  }
+
   @PostMapping(value = "/generate", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
   private String generate(GenerateTokenRQ generateTokenRQ)
       throws NoSuchAlgorithmException, InvalidKeySpecException {
