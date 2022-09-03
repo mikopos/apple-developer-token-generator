@@ -26,9 +26,8 @@ public class JwtUtil {
   }
 
   public static String transformPrivateKey(String secret) {
-    var temp = secret.replace(BEGIN_PRIVATE_KEY, "")
+    return secret.replace(BEGIN_PRIVATE_KEY, "")
         .replace(END_PRIVATE_KEY, "")
         .replace(LINE_CHANGE,"");
-    return temp;
   }
 }

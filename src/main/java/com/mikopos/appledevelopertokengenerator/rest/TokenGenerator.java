@@ -5,7 +5,6 @@ import com.mikopos.appledevelopertokengenerator.services.GenerateTokenService;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,11 +15,6 @@ public class TokenGenerator {
 
   public TokenGenerator(GenerateTokenService generateTokenService) {
     this.generateTokenService = generateTokenService;
-  }
-
-  @GetMapping(value = "/")
-  private String index(){
-    return "forward:index.html";
   }
 
   @PostMapping(value = "/generate", produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
