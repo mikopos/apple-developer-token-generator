@@ -41,3 +41,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 ## Acknowledgments
 
 * [Generating Developer Token](https://developer.apple.com/documentation/applemusicapi/generating_developer_tokens)
+* [Colorlib](https://colorlib.com/wp/templates/)
