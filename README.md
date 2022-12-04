@@ -16,14 +16,14 @@ where to find it and which are the prerequisites steps you have to do before you
 * An already existing private key for the API you want to use the  generated token
 
 ### URL
-* [Apple developers token generator](https://apple-developers-token-gen.herokuapp.com/)
+* [Apple developers token generator](https://apple-token-generator.web.app/)
 
 ## Built With
 * [HTML](https://en.wikipedia.org/wiki/HTML) - Used to create the initial UI.
 * [Springboot](https://en.wikipedia.org/wiki/Spring_Framework) - Used to create the backend layer.
 
 ## Deployed on
-* [Heroku](https://en.wikipedia.org/wiki/Heroku)
+* [Firebase](https://firebase.google.com/)
 
 ## Contributing
 
