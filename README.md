@@ -2,7 +2,7 @@
 
 This project aims to automate the process of generating and signing apple developer tokens for Web apps, 
 that are suppose to use apple's APIs. It does not save neither personal nor any private key
-information in any type of storage (db, cache etc.). The application has been also deployed on heroku,
+information in any type of storage (db, cache etc.). The application has been also deployed on Firebase,
 which uses an SSL encrypted connection to transmit the data, <strong>SO YOU CAN FEEL PRETTY SAFE</strong>,
 using this application.
 
